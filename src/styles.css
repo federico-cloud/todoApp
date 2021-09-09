@@ -321,7 +321,7 @@ body {
 
 .clear-completed,
 html .clear-completed:active {
-	float: right;
+	display: block;
 	position: relative;
 	line-height: 20px;
 	text-decoration: none;
