@@ -7,4 +7,5 @@ export const todoList = new TodoList();
 const task = new Todo('Aprender JS');
 
 todoList.newTodo(task);
+
 createTodoHTML(task);

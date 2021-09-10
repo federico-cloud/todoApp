@@ -6,15 +6,26 @@ export class TodoList {
 
     }
 
-    newTodo(todo){
-        this.todos.push(todo);
+    newTodo( todo ){
+        this.todos.push( todo );
     }
 
-    deleteTodo(id){
+    deleteTodo( id ){
 
     }
 
-    completeTodo(id){
+    markTaskCompleted( id ){
+
+        for ( const todo of this.todos ) {
+
+            if ( todo.id  == id ) {
+
+                todo.completed = !todo.completed;
+                break;
+
+            }
+
+        }
 
     }
 

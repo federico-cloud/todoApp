@@ -8,7 +8,7 @@ const newTodoEvent = document.querySelector('.new-todo');
 export const createTodoHTML = ( todo ) => {
 
     const htmlTodo = `
-    <li class="${ ( todo.completed ) ? ' completed' : ' ' }" data-id="${ todo.id }">
+    <li class="${ ( todo.completed ) ? ' completed' : ' ' }" data="${ todo.id }">
         <div class="view">
             <input class="toggle" type="checkbox" ${ (todo.completed) ? 'checked' : ' '}>
             <label>${todo.task}</label>
@@ -40,4 +40,19 @@ newTodoEvent.addEventListener('keyup', (event) =>{
     
     }
     
+});
+
+divTodoList.addEventListener('click', (event) =>{
+
+    const nameOfElement = event.target.localName;
+    const todoElement = event.target.parentElement.parentElement;
+    const ID = todoElement.getAttribute('data');
+ 
+    if (nameOfElement.includes('input')){
+
+        todoList.markTaskCompleted(ID);
+        todoElement.classList.toggle('completed');
+
+    }
+
 });
