@@ -47,12 +47,19 @@ divTodoList.addEventListener('click', (event) =>{
     const nameOfElement = event.target.localName;
     const todoElement = event.target.parentElement.parentElement;
     const ID = todoElement.getAttribute('data');
- 
+
+
     if (nameOfElement.includes('input')){
 
-        todoList.markTaskCompleted(ID);
-        todoElement.classList.toggle('completed');
+        todoList.markTaskCompleted( ID );
+        todoElement.classList.toggle( 'completed' );
 
+    } else if ( nameOfElement.includes('button') ) {
+
+        todoList.deleteTodo( ID );
+        divTodoList.removeChild(todoElement);
+        
     }
 
+    
 });

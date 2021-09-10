@@ -6,15 +6,17 @@ export class TodoList {
 
     }
 
-    newTodo( todo ){
+    newTodo( todo ) {
         this.todos.push( todo );
     }
 
-    deleteTodo( id ){
+    deleteTodo( id ) {
+
+        this.todos = this.todos.filter( todo => todo.id != id );
 
     }
 
-    markTaskCompleted( id ){
+    markTaskCompleted( id ) {
 
         for ( const todo of this.todos ) {
 
