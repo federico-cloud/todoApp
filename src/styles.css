@@ -274,10 +274,13 @@ body {
 }
 
 footer a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	text-decoration: none;
 	margin: 20px;
 	padding: 10px;
-	height: 40px;
+	height: 50px;
 	width: 150px;
 	border: 2px solid #b83f45;
 	border-radius: 5px;
