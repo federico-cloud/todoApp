@@ -2,9 +2,12 @@ import { Todo } from '../classes'
 import { todoList } from '../index';
 
 //HTML references
-const divTodoList = document.querySelector('.todo-list')
-const newTodoEvent = document.querySelector('.new-todo');
-const deleteBtn = document.querySelector('.clear-completed');
+const divTodoList       = document.querySelector('.todo-list')
+const newTodoEvent      = document.querySelector('.new-todo');
+const deleteBtn         = document.querySelector('.clear-completed');
+const allTasks          = document.querySelector('.all');
+const pendingTasks      = document.querySelector('.pending');
+const completedTasks    = document.querySelector('.completed');
 
 export const createTodoHTML = ( todo ) => {
 
@@ -46,8 +49,8 @@ newTodoEvent.addEventListener('keyup', (event) =>{
 divTodoList.addEventListener('click', (event) =>{
 
     const nameOfElement = event.target.localName;
-    const todoElement = event.target.parentElement.parentElement;
-    const ID = todoElement.getAttribute('data');
+    const todoElement   = event.target.parentElement.parentElement;
+    const ID            = todoElement.getAttribute('data');
 
 
     if (nameOfElement.includes('input')){
@@ -79,4 +82,84 @@ deleteBtn.addEventListener( 'click', () => {
     }
 
     
+});
+
+allTasks.addEventListener( 'click', () => {
+
+    if(allTasks.classList.contains('active')){
+        
+        allTasks.classList.remove('active');
+
+    } else {
+
+        pendingTasks.classList.remove('active');
+        allTasks.classList.add('active');
+        completedTasks.classList.remove('active');
+
+    }
+
+    for ( let i = divTodoList.children.length-1; i >= 0; i-- ){
+
+        const element = divTodoList.children[i];
+        if (element.classList.contains('hidden')){
+            element.classList.remove('hidden');
+        }
+
+    }
+
+});
+
+pendingTasks.addEventListener( 'click', ()=> {
+
+    if(pendingTasks.classList.contains('active')){
+        
+        pendingTasks.classList.remove('active');
+
+    } else {
+
+        pendingTasks.classList.add('active');
+        allTasks.classList.remove('active');
+        completedTasks.classList.remove('active');
+
+    }
+
+    for ( let i = divTodoList.children.length-1; i >= 0; i-- ){
+
+        const element = divTodoList.children[i];
+        if (element.classList.contains('completed')){
+            element.classList.add('hidden');
+        } else {
+            element.classList.remove('hidden');
+        };
+
+    }
+
+});
+
+completedTasks.addEventListener( 'click', () => {
+
+    if(completedTasks.classList.contains('active')){
+        
+        completedTasks.classList.remove('active');
+
+    } else {
+
+        pendingTasks.classList.remove('active');
+        allTasks.classList.remove('active');
+        completedTasks.classList.add('active');
+
+    }
+    
+
+    for ( let i = divTodoList.children.length-1; i >= 0; i-- ){
+
+        const element = divTodoList.children[i];
+        if (!element.classList.contains('completed')){
+            element.classList.add('hidden');
+        } else {
+            element.classList.remove('hidden');
+        };
+
+    }
+
 });
