@@ -28,7 +28,7 @@ const loadStore = () =>{
     throw new Error('is not implemented');
 }
 
-const getTodos = () => {
+const getTodos = (fillter = Filters.All) => {
     throw new Error('is not implemented');
 }
 
