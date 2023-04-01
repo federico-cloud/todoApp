@@ -15,7 +15,7 @@ const state = {
         new Todo('2'),
         new Todo('3')
     ],
-    fillter: Filters.All
+    filter: Filters.All
 
 }
 
@@ -28,7 +28,7 @@ const loadStore = () =>{
     throw new Error('is not implemented');
 }
 
-const getTodos = (fillter = Filters.All) => {
+const getTodos = (filter = Filters.All) => {
     throw new Error('is not implemented');
 }
 
@@ -48,7 +48,7 @@ const deleteCompleted = () =>{
     throw new Error('is not implemented');
 }
 
-const setFilter = (newFilter = Fillters.All) =>{
+const setFilter = (newFilter = Filters.All) =>{
     throw new Error('is not implemented');
 }
 
