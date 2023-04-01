@@ -29,31 +29,46 @@ const loadStore = () =>{
 }
 
 const getTodos = (filter = Filters.All) => {
-    throw new Error('is not implemented');
+
+    switch (filter) {
+        case Filters.All:
+            return [...state.todos]    
+        case Filters.Compeleted:
+            return state.todos.filter(todo => todo.done);
+        case Filters.Pending:
+            return state.todos.filter(todo => !todo.done);
+        default:
+            throw new Error('Option is not valid');
+    }
+
 }
 
 const addTodo = (desc) =>{
-    throw new Error('is not implemented');
+    if (!desc) throw new Error('The description is required');
+    state.todos.push(new Todo(desc));
 }
 
 const toogleTodo = (todoId) =>{
-    throw new Error('is not implemented');
+    state.todos = state.todos.map(todo => {
+        todo.id === todoID ? todo.done = !todo.done : ''
+        return todo;
+    })
 }
 
 const deleteTodo = (todoId) =>{
-
+    state.todos = state.todos.filter(todo => todo.id !== todoId);
 }
 
 const deleteCompleted = () =>{
-    throw new Error('is not implemented');
+    state.todos = state.todos.filter(todo => todo.done)
 }
 
 const setFilter = (newFilter = Filters.All) =>{
-    throw new Error('is not implemented');
+    state.filter = newFilter;
 }
 
 const getCurrentFilter = () =>{
-    throw new Error('is not implemented');
+    return state.filter;
 }
 
 export default {
@@ -67,3 +82,8 @@ export default {
     setFilter,
     toogleTodo,
 }
+
+
+state.todos = state.todos.filter(todo => todo.done)
+
+console.log(state.todos)
