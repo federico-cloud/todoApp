@@ -28,6 +28,10 @@ const loadStore = () =>{
     throw new Error('is not implemented');
 }
 
+const getTodos = () => {
+    throw new Error('is not implemented');
+}
+
 const addTodo = (desc) =>{
     throw new Error('is not implemented');
 }
@@ -57,6 +61,7 @@ export default {
     deleteCompleted,
     deleteTodo,
     getCurrentFilter,
+    getTodos,
     initStore,
     loadStore,
     setFilter,
