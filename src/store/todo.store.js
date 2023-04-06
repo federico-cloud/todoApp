@@ -1,30 +1,30 @@
 import { Todo } from "../models/todo.model"
 
 const Filters = {
-
     All:        'all',
     Compeleted: 'Completed',
     Pending:    'Pending',
-
 }
 
 const state = {
-    
-    todos:[
-        new Todo('federico'),
-        new Todo('estudia'),
-        new Todo('urgente')
-    ],
+    todos:[],
     filter: Filters.All
-
 }
 
 const initStore = () =>{
-    console.log('Store inicializado');
+    loadStore();
+}
+
+const saveStorage = () =>{
+    localStorage.setItem('todos', JSON.stringify(state));
 }
 
 const loadStore = () =>{
-    throw new Error('is not implemented');
+    if (localStorage.getItem('todos')) {
+        const{todos  = [], filter = Filters.All} = JSON.parse(localStorage.getItem('todos'));
+        state.todos  = todos;
+        state.filter = filter
+    }
 }
 
 const getTodos = (filter = Filters.All) => {
@@ -39,12 +39,12 @@ const getTodos = (filter = Filters.All) => {
         default:
             throw new Error('Option is not valid');
     }
-
 }
 
 const addTodo = (desc) =>{
     if (!desc) throw new Error('The description is required');
     state.todos.push(new Todo(desc));
+    saveStorage();
 }
 
 const toggleTodo = (todoId) =>{
@@ -52,18 +52,22 @@ const toggleTodo = (todoId) =>{
         todo.id === todoId ? todo.done = !todo.done : ''
         return todo;
     })
+    saveStorage();
 }
 
 const deleteTodo = (todoId) =>{
     state.todos = state.todos.filter(todo => todo.id !== todoId);
+    saveStorage();
 }
 
 const deleteCompleted = () =>{
     state.todos = state.todos.filter(todo => todo.done)
+    saveStorage();
 }
 
 const setFilter = (newFilter = Filters.All) =>{
     state.filter = newFilter;
+    saveStorage();
 }
 
 const getCurrentFilter = () =>{

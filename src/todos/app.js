@@ -27,6 +27,7 @@ export const App = (elementId) => {
     //HTML references
     const newDescInput = document.querySelector(ElementIDs.newTodoInput);
     const todoListUL   = document.querySelector(ElementIDs.todoList);
+    const btnDestroy   = document.querySelector('.view button.destroy');
 
     //Listeners
     newDescInput.addEventListener('keyup', (event) =>{
@@ -42,6 +43,16 @@ export const App = (elementId) => {
         const element = event.target.closest('[data-id]');
         todoStore.toggleTodo(element.getAttribute('data-id'));
         displayTodos();
+    })
+
+    
+    todoListUL.addEventListener('click', (event) => {
+        if(event.target.className === 'destroy'){
+            const element = event.target.closest('[data-id]');
+            todoStore.deleteTodo(element.getAttribute('data-id'));
+            displayTodos();
+        }
+        
     })
 
 
