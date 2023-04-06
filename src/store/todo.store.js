@@ -11,9 +11,9 @@ const Filters = {
 const state = {
     
     todos:[
-        new Todo('1'),
-        new Todo('2'),
-        new Todo('3')
+        new Todo('federico'),
+        new Todo('estudia'),
+        new Todo('urgente')
     ],
     filter: Filters.All
 
@@ -21,7 +21,6 @@ const state = {
 
 const initStore = () =>{
     console.log('Store inicializado');
-    console.log(state)
 }
 
 const loadStore = () =>{
@@ -84,6 +83,6 @@ export default {
 }
 
 
-state.todos = state.todos.filter(todo => todo.done)
+// state.todos = state.todos.filter(todo => todo.done)
 
-console.log(state.todos)
+// console.log(state.todos)
