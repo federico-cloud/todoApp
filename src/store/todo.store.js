@@ -47,9 +47,9 @@ const addTodo = (desc) =>{
     state.todos.push(new Todo(desc));
 }
 
-const toogleTodo = (todoId) =>{
+const toggleTodo = (todoId) =>{
     state.todos = state.todos.map(todo => {
-        todo.id === todoID ? todo.done = !todo.done : ''
+        todo.id === todoId ? todo.done = !todo.done : ''
         return todo;
     })
 }
@@ -79,10 +79,5 @@ export default {
     initStore,
     loadStore,
     setFilter,
-    toogleTodo,
+    toggleTodo,
 }
-
-
-// state.todos = state.todos.filter(todo => todo.done)
-
-// console.log(state.todos)
